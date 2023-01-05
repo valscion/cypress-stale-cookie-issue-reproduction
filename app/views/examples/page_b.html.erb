@@ -1,0 +1,14 @@
+<h1>Page B</h1>
+
+<p>Flash contents: <%= flash[:the_flash_message] %></p>
+<button id="do-fetch-request">Trigger fetch request</button>
+
+<script type="text/javascript">
+document.getElementById("do-fetch-request").onclick = () => {
+  fetch("/set_the_flash", {
+    method: 'POST'
+  }).then(() => {
+    location.reload(true)
+  })
+}
+</script>

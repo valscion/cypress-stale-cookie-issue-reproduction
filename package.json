@@ -1,6 +1,11 @@
 {
   "private": true,
   "name": "cypress-cookie-issue-reproduction",
+  "scripts": {
+    "cypress:rails": "bin/rails server --port=3333 --environment=test --binding=localhost --pid=tmp/pids/cypress-rails-server.pid",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
   "devDependencies": {
     "cypress": "12.6.0"
   }

@@ -1,0 +1,15 @@
+<h1>Instructions</h1>
+
+<p>To trigger the Cypress cookie reproduction, we need to have two pages:</p>
+<ul>
+<li><a href="/page_a">Page A</a> which contains a link that needs to be clicked once</li>
+<li><a href="/page_b">Page B</a> which contains an XHR request that needs to be made</li>
+</ul>
+
+<p>If we don't click on the link in Page A before triggering the XHR request on Page B, the cookie issue is not shown.</p>
+
+<h2>Expected outcome</h2>
+<p>We expect that the XHR request on Page B ends up showing THIS_SHOULD_BE_VISIBLE_AFTER_BUTTON_CLICK text</p>
+
+<h2>Actual outcome</h2>
+<p><a href="https://github.com/cypress-io/cypress/issues/25841">https://github.com/cypress-io/cypress/issues/25841</a></p>
