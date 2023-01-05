@@ -1,0 +1,7 @@
+{
+  "private": true,
+  "name": "cypress-cookie-issue-reproduction",
+  "devDependencies": {
+    "cypress": "12.6.0"
+  }
+}
