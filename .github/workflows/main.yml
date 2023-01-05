@@ -1,0 +1,82 @@
+name: Cypress Tests
+
+on: [push]
+
+jobs:
+  cypress-chrome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install ruby dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          start: npm run cypress:rails
+      # after the test run completes
+      # store videos and any screenshots
+      # NOTE: screenshots will be generated only if E2E test failed
+      # thus we store screenshots only on failures
+      # Alternative: create and commit an empty cypress/screenshots folder
+      # to always have something to upload
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: chrome-cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: chrome-cypress-videos
+          path: cypress/videos
+      # A Rails server log is always generated so we use "always()"
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: chrome-rails-test-log
+          path: log/test.log
+  cypress-firefox:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Install ruby dependencies
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests
+      - name: Cypress run
+        uses: cypress-io/github-action@v5
+        with:
+          browser: firefox
+          start: npm run cypress:rails
+      # after the test run completes
+      # store videos and any screenshots
+      # NOTE: screenshots will be generated only if E2E test failed
+      # thus we store screenshots only on failures
+      # Alternative: create and commit an empty cypress/screenshots folder
+      # to always have something to upload
+      - uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: firefox-cypress-screenshots
+          path: cypress/screenshots
+      # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: firefox-cypress-videos
+          path: cypress/videos
+      # A Rails server log is always generated so we use "always()"
+      - uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: firefox-rails-test-log
+          path: log/test.log
