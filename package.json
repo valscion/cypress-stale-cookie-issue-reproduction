@@ -7,6 +7,6 @@
     "cypress:run": "cypress run"
   },
   "devDependencies": {
-    "cypress": "12.6.0"
+    "cypress": "https://cdn.cypress.io/beta/npm/12.6.0/linux-x64/fix-duplicate-and-expired-cookies-86a8cd83792a046146bb43d869f8812dd0fc800c/cypress.tgz"
   }
 }
