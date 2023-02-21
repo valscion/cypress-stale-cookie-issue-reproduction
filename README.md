@@ -21,19 +21,30 @@ The Cypress test `cypress/e2e/spec.cy.js` is running also in GitHub actions and 
 
 ## Setup steps
 
+Install npm dependencies: `npm install`
+
+## To run Rails test server
+
+### Using Docker
+
+```
+docker-compose --project-name=cypress-stale-cookie-repro up --build
+```
+
+### Using `rbenv`
+
 * Install rbenv: https://github.com/rbenv/rbenv#installation
 * Checkout this repository and `cd` to it
 * Install same version of ruby as this repo uses: `rbenv install`
 * Install ruby dependencies: `bundle install`
-* Install npm dependencies: `npm install`
-
-## To run Cypress
 
 Open the test environment rails server in own terminal:
 
 ```
 npm run cypress:rails
 ```
+
+### Running Cypress itself
 
 Run the Cypress app in another terminal:
 
@@ -52,7 +63,7 @@ You can also access the test Rails server in a different browser using http://lo
 
 ## To run regular development server
 
-The development server automatically reloads code changes while the test server doesn't.
+The development server automatically reloads code changes while the test server doesn't. Note that this needs `rbenv` steps to work.
 
 ```
 bin/rails server
