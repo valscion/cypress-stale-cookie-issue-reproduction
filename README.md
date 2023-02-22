@@ -8,9 +8,9 @@ To trigger the Cypress stale cookie issue, we need this interaction:
 2. The link click leads to a page that sets a cookie and redirects back to "Page A"
 3. The "Page A" now shows the cookie value as a debug information
 4. Cypress is instructed to go "Page B"
-5. "Page B" triggers an XHR request
-6. The server sets a cookie during the XHR request, returns HTTP 204 No Content
-7. "Page B" is reloaded after XHR request is done
+5. "Page B" triggers a fetch request
+6. The server sets a cookie during the fetch request, returns HTTP 204 No Content
+7. "Page B" is reloaded after fetch request is done
 8. "Page B" should show the cookie value
 
 With Cypress v11.2.0, "Page B" indeed shows the cookie value. The situation is not the same with Cypress v12.6.0.
