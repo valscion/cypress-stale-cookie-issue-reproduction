@@ -13,7 +13,7 @@ To trigger the Cypress stale cookie issue, we need this interaction:
 7. "Page B" is reloaded after fetch request is done
 8. "Page B" should show the cookie value
 
-With Cypress v11.2.0, "Page B" indeed shows the cookie value. The situation is not the same with Cypress v12.6.0.
+With Cypress v11.2.0, "Page B" indeed shows the cookie value. The situation is not the same with Cypress v12.7.0.
 
 ## GitHub actions
 
